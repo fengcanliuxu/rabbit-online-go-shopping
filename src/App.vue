@@ -1,30 +1,23 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <!-- vue3.0可以是代码片段，可以没有根标签 -->
+  <div>
+    app
+    <!-- //使用根模块 -->
+    <p>{{ $store.state.username }}</p>
+    <!-- 使用根模块getter属性 -->
+    <p>{{ $store.getters['newName'] }}</p>
+  </div>
 </template>
-
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+<script>
+import { useStore } from 'vuex'
+export default {
+  name: 'App',
+  setup() {
+    const store = useStore()
+    console.log(store.state.username)
+    console.log(store.getters.newName)
   }
 }
-</style>
+</script>
+
+<style lang="less"></style>
