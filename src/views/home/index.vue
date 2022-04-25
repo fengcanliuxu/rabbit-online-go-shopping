@@ -1,10 +1,11 @@
 <template>
-根组件
-  <RouterView />
+  <div>HomePage</div>
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'HomePage'
+}
 </script>
 
 <style>
