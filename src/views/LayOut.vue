@@ -1,19 +1,42 @@
 <template>
   <!-- 顶部通栏 -->
-  <nav></nav>
+  <app-navbar></app-navbar>
   <!-- 头部组件 -->
-  <header></header>
+  <app-header></app-header>
+  <!-- 吸顶头部 -->
+  <AppHeaderSticky />
   <!-- 内容容器 -->
-  <div class="main">
+  <div class="app-body">
     <!-- 二级路由 -->
-  <riuter-view></riuter-view>
+    <router-view></router-view>
   </div>
   <!-- 底部组件 -->
-  <footer>底部组件</footer>
+  <app-footer></app-footer>
 </template>
 
 <script>
+import AppNavbar from '@/components/app-navbar'
+import AppHeader from '@/components/app-header.vue'
+import AppFooter from '../components/app-footer.vue'
+import { useStore } from 'vuex'
+import AppHeaderSticky from '@/components/app-header-sticky.vue'
 export default {
-  name: 'LayOut'
+  name: 'LayOut',
+  components: {
+    AppNavbar,
+    AppHeader,
+    AppFooter,
+    AppHeaderSticky
+  },
+  // 获取下分类数据
+  setup() {
+    const store = useStore()
+    store.dispatch('category/getList')
+  }
 }
 </script>
+<style scoped lang="less">
+.app-body {
+  height: 600px;
+}
+</style>
