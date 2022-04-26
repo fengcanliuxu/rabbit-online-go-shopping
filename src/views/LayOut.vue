@@ -5,7 +5,8 @@
   <header></header>
   <!-- 内容容器 -->
   <div class="main">
-    <RouterView />
+    <!-- 二级路由 -->
+  <riuter-view></riuter-view>
   </div>
   <!-- 底部组件 -->
   <footer>底部组件</footer>

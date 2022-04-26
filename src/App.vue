@@ -1,6 +1,6 @@
 <template>
 根组件
-  <RouterView />
+ <router-view></router-view>
 </template>
 
 <script>
