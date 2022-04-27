@@ -7,6 +7,12 @@
           <RouterLink :to="`/category/sub/${sub.id}`" v-for="sub in item.children" :key="sub.id">{{ sub.name }}
           </RouterLink>
         </template>
+        <template v-else>
+          <!-- 骨架 -->
+          <XtxSkeleton width="60px" height="18px" style="margin-right:5px" bg="rgba(255,255,255,0.2)" />
+          <XtxSkeleton width="50px" height="18px" bg="rgba(255,255,255,0.2)" />
+
+        </template>
       </li>
     </ul>
     <!-- 弹层 -->
@@ -46,8 +52,12 @@
 import { computed, reactive, ref } from 'vue'
 import { useStore } from 'vuex'
 import { findBrand } from '@/api/home'
+import XtxSkeleton from '@/components/library/xtx-skeleton'
 export default {
   name: 'HomeCategory',
+  components: {
+    XtxSkeleton
+  },
   setup() {
     const store = useStore()
     // 最终使用数据=9个分类()+1个品牌
@@ -82,6 +92,7 @@ export default {
     })
     return { menuList, categoryId, currCategory }
   }
+
 }
 </script>
 <style scoped lang='less'>
@@ -224,6 +235,21 @@ export default {
     .layer {
       display: block;
     }
+  }
+}
+
+//骨架动画
+.xtx-skeleton {
+  animation: fade 1s linear infinite alternate;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.2;
+  }
+
+  to {
+    opacity: 1;
   }
 }
 </style>
